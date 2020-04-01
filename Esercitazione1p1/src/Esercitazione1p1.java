@@ -16,6 +16,7 @@ public class Esercitazione1p1 {
 			}
 		}
 
+		
 		System.out.println("Array ordinato: ");
 		 for (int i = 0; i < array_interi.length; i++) {
 		     System.out.print(array_interi[i] + " ");
@@ -23,8 +24,9 @@ public class Esercitazione1p1 {
 		 System.out.println("");
 	}
 	
-	// non considera gli sapzzi
-	static boolean esercizio2_palindroma(String parola) {
+	
+		// non considera gli sapzzi
+		static boolean esercizio2_palindroma(String parola) {
 		boolean palindroma = true;
 		// rimuovo gli spazzi
 		String parola_senza_spazzi = parola.replaceAll(" ", "");				
@@ -35,8 +37,6 @@ public class Esercitazione1p1 {
 				if(parola_senza_spazzi.charAt(i) != parola_senza_spazzi.charAt(j))
 					palindroma=false;
 			}
-		
-		
 		return palindroma;
 	}
 	

@@ -124,6 +124,8 @@ public class EsArray {
 		}
 		
 		System.out.println("Numero lettere: " + conta);		
+		
+		// input_stringhe.close();
 	}
 	
 	static void stampaCicli() {
