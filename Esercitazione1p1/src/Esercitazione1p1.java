@@ -40,15 +40,77 @@ public class Esercitazione1p1 {
 		return palindroma;
 	}
 	
-	public static void main(String[] args) {
+	static void esercizio3(){
 		
-		esercizio1();
+		// uso long al posto di int perchè i numeri di fibonacci 
+		//tendono a diventare molto grandi ad ogni iterazione e 
+		//un interno non avrebbe abbbastanza spazio per contenerli
+		long tmp1 = 0;
+		long tmp2 = 1;
+		long numero = 0;
+		
+		System.out.println("Numero: " + tmp1);
+		System.out.println("Numero: " + tmp2);
+		
+		for(int i = 0; i < 48; i++) {
+			numero = tmp1 + tmp2;
+			tmp1 = tmp2;
+			tmp2 = numero;
+			System.out.println("Numero: " + numero);
+		}
+	}
+	
+	static void esercizio4() {
+		int [][] matrice = new int[4][3];
+		int [][] trasposta = new int[3][4];
+		
+		//inizializzo matrice
+		for(int i = 0; i < matrice.length; i++) { 
+			for(int j = 0; j < matrice[0].length; j++) {
+				matrice[i][j] = (int)(Math.random()*10);// riempio matrice con numeri casuali
+			}
+		}
+		
+		// trasposizione
+		for(int i = 0; i < matrice.length; i++) { // scorro le righe di matrice (colonne di trasposta)
+			for(int j = 0; j < matrice[0].length; j++) { // scorro le colonne di matrice (righe di trasposta)
+				trasposta[j][i] = matrice[i][j];
+			}
+		}
+		
+		
+		// stampo matrice
+		System.out.println("Stampo Matrice: ");
+		for(int i = 0; i < matrice.length; i++) { 
+			for(int j = 0; j < matrice[0].length; j++) {
+				System.out.print(matrice[i][j] + " ");
+			}
+			System.out.println("");
+		}
+		
+		
+		// stampo trasposta
+		System.out.println("Stampo Trasposta: ");
+		for(int i = 0; i < trasposta.length; i++) { 
+			for(int j = 0; j < trasposta[0].length; j++) {
+				System.out.print(trasposta[i][j]+ " ");
+			}
+			System.out.println("");
+		}
+	}
+	
+	
+	
+	public static void main(String[] args) {
+		//esercizio1();
 		
 		System.out.println("Palindorma i topi non avevano nipoti: " + esercizio2_palindroma("i topi non avevano nipoti"));
 		System.out.println("Palindorma anna: " + esercizio2_palindroma("anna"));
 		System.out.println("Palindorma fuoco: " + esercizio2_palindroma("fuoco"));
 		
+		esercizio3();
 		
+		esercizio4();
 	}
 
 }
