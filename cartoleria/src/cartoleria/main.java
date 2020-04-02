@@ -4,46 +4,9 @@ import java.util.Date;
 
 public class main {
 
-	public static void main(String[] args) {
-		int num_clienti = 10, dimensione_magazzino = 10, numero_ordini = 6;
-		Date oggi = new Date(10, 2, 2020);
+	public static void main(String[] args) {		
 		
-		GestoreCartoleria gestore = new GestoreCartoleria(num_clienti, dimensione_magazzino, numero_ordini);
-		
-		// riempio la cartoleria
-		gestore.aggiungiArticolo(new Gomma("Mini", "Faber-Castel", 3, new Dimensione(5, 2, 3), "Parallelepipedo"));
-		gestore.aggiungiArticolo(new Penna("Bic", "Stilo", 2, "Nero"));
-		gestore.aggiungiArticolo(new Gomma("Normale", "Faber-Castel", 6, new Dimensione(5, 5, 8), "Parallelepipedo"));
-		gestore.aggiungiArticolo(new Gomma("Normale", "Bic", 3, new Dimensione(5, 5, 3), "Trapezio"));
-		gestore.aggiungiArticolo(new Gomma("Mini", "Faber-Castel", 3, new Dimensione(5, 2, 3), "Parallelepipedo"));
-		gestore.aggiungiArticolo(new Gomma("Mini", "Faber-Castel", 3, new Dimensione(5, 2, 3), "Parallelepipedo"));
-		gestore.aggiungiArticolo(new Penna("Bic", "Stilo", 3, "Verde"));
-		gestore.aggiungiArticolo(new Gomma("Mini", "Faber-Castel", 3, new Dimensione(5, 2, 3), "Parallelepipedo"));
-		gestore.aggiungiArticolo(new Penna("Bic", "Stilo", 3, "blu"));
-		
-		
-		// stampo le giacenze
-		gestore.giacenze();
-		
-		//stampo valore totale delle giacenze
-		gestore.totaleGiacenze();
-		
-		// creo clienti
-		gestore.addCliente(new Privato("Davide"));
-		gestore.addCliente(new Privato("Golia", 1));
-		gestore.addCliente(new Azienda("Alluminox"));
-		gestore.addCliente(new Azienda("Esselunga", 300));
-		gestore.addCliente(new Azienda("Conad", 300));
-		gestore.addCliente(new Azienda("Gigante", 300));
-
-		// creo un ordine
-		Ordine ord1 = new Ordine(oggi, 1, new Privato("Davide"), 2);
-		
-		// inserisco gli articoli nell'ordine
-		
-		
-		
-		/*	
+			
 		// creo una cartoleria con spazio per 10 articoli
 		Cartoleria smile = new Cartoleria(10);
 		
@@ -368,7 +331,7 @@ public class main {
 		
 		System.out.println("Saldo cliente: " + clienti[4].getSaldo());
 		System.out.println("Saldo cliente: " + clienti[5].getSaldo());
-	*/	
+	
 	}
 
 }
