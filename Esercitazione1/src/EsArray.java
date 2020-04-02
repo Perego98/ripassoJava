@@ -115,12 +115,14 @@ public class EsArray {
 		int conta = 0;
 		
 		for(int i = 0; i< str.length; i++) {
-			if(str[i].length() > 0) { // se non è la stringa vuota
-				int cod = (int)str[i].charAt(0);// prendo il codice ascii della prima lettera
-				if(cod >= 65 && cod <= 90 ) {// se la lettera è una lettera maiuscola
-					conta += str[i].length(); // aggiungo la lunghezza della parola alla conta
-				}
-			}			
+			if(str[i] != null){ // controllo che la stringa esista
+					if(str[i].length() > 0) { // se non è la stringa vuota
+						int cod = (int)str[i].charAt(0);// prendo il codice ascii della prima lettera
+						if(cod >= 65 && cod <= 90 ) {// se la lettera è una lettera maiuscola
+							conta += str[i].length(); // aggiungo la lunghezza della parola alla conta
+						}
+					}
+			}
 		}
 		
 		System.out.println("Numero lettere: " + conta);		

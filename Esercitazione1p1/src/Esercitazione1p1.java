@@ -28,6 +28,8 @@ public class Esercitazione1p1 {
 		// non considera gli sapzzi
 		static boolean esercizio2_palindroma(String parola) {
 		boolean palindroma = true;
+		
+		if(parola != null) {// se la parola non viene passata ritorno false
 		// rimuovo gli spazzi
 		String parola_senza_spazzi = parola.replaceAll(" ", "");				
 
@@ -37,6 +39,10 @@ public class Esercitazione1p1 {
 				if(parola_senza_spazzi.charAt(i) != parola_senza_spazzi.charAt(j))
 					palindroma=false;
 			}
+		}
+		else {
+			palindroma = false;
+		}
 		return palindroma;
 	}
 	
