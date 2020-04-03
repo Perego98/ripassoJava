@@ -42,7 +42,8 @@ public class Ordine {
 	}
 	
 	public boolean chiudiOrdine() {
-		// se il cliente è un privato
+		// se il cliente è un privato deve avere abbastanza soldi per chiudere l'ordine
+		// se è una azienda i soldi vengono scalati dal conto corrente
 		if(cliente != null) {
 			if(cliente.getClass() != new Azienda().getClass()) {
 				if(totale() > cliente.getSaldo()) {

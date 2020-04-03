@@ -65,6 +65,8 @@ public class Cartoleria {
 		}
 	}
 	
+	// reinserisco gli articoli che erano stati tolti da un ordine
+	// che non è andato a buon fine
 	public void addArticoli(Articolo [] articoli) {
 		for(int i = 0; i< articoli.length; i++) {
 			if(articoli[i] != null) {
