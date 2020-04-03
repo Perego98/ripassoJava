@@ -26,6 +26,10 @@ public class Vehicle {
 	public String getTarga() {
 		return targa;
 	}
+	
+	public String getModello() {
+		return modello;
+	}
 
 	@Override
 	public String toString() {
