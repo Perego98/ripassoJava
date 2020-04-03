@@ -20,7 +20,7 @@ public class Person {
 	public Person(String surname, String name, String tax_code, String city) {
 		this.surname = surname;
 		this.name = name;
-		this.tax_code = tax_code.toUpperCase();
+		this.tax_code = tax_code.toUpperCase();// lo metto sempre in maiuscolo
 		this.city = city;
 	}
 
@@ -51,7 +51,7 @@ public class Person {
 
 
 	public void setTax_code(String tax_code) {
-		this.tax_code = tax_code.toUpperCase();
+		this.tax_code = tax_code.toUpperCase();// lo metto sempre in maiuscolo
 	}
 
 
