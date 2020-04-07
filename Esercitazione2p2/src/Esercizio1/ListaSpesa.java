@@ -6,8 +6,8 @@ import java.util.Scanner;
 public class ListaSpesa {
 
 	static void rimepiElenco(Prodotti [] prodotti) {
-		prodotti[0] = new Alimentari(17892734, "Mela", 2, new Date(2020, 4, 10));
-		prodotti[1] = new Alimentari(16892734, "Banana", 2, new Date(2020, 4, 29));
+		prodotti[0] = new Alimentari(17892734, "Mela", 2, new Date(2020, 3, 16));
+		prodotti[1] = new Alimentari(16892734, "Banana", 2, new Date(2020, 3, 29));
 		prodotti[2] = new NonAlimentari(90892734, "Cestino", 12, "plastica");
 		prodotti[3] = new NonAlimentari(91892734, "fogli", 6, "carta");
 		prodotti[4] = new NonAlimentari(96892734, "specchio", 150, "vetro");
@@ -23,6 +23,7 @@ public class ListaSpesa {
 		boolean finito = false;
 		System.out.println("Inserire 0 per uscire...");
 		
+		// rimango nel ciclo fino a che l'utente non decide di uscire premendo 0
 		do {
 			stampaElenco(prodotti);
 			System.out.print("Inserire codice articolo: ");
@@ -31,12 +32,18 @@ public class ListaSpesa {
 				cod = input.nextInt();
 			}
 			catch(Exception e) {
-				System.out.println("Inserimento non valido");
+				System.out.println("Inserimento non valido... uscita");
 			}
 			
-			if (cod==0)
+			
+			if (cod==0) // se preme 0 esco
 				finito = true;
-			else if(!find(lista_spesa, prodotti[cod])) {
+			else if(cod < 0 || (cod > prodotti.length || cod > lista_spesa.length))
+			{ // altrimenti se sco dal limite stampo errore
+				System.out.println("Inserimento non valido...");
+			}
+			else if(!find(lista_spesa, prodotti[cod-1])) {
+				// altrimenti s enon ho gia inserito l'articolo lo inserisco
 				boolean inserito = false;
 				for(int i = 0; i < lista_spesa.length && !inserito; i++) {
 					if(lista_spesa[i] == null) {

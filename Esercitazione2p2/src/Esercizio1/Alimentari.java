@@ -14,13 +14,13 @@ public class Alimentari extends Prodotti{
 	@Override
 	public void applicaSconto() {
 		Date oggi = new Date();// data di oggi
-		/*long dallaDataMilliSecondi = data_scadenza.getTime();
-		long allaDataMilliSecondi = oggi.getTime();
-		long millisecondiFraDueDate = dallaDataMilliSecondi - allaDataMilliSecondi;
-		double giorniFraDueDate = millisecondiFraDueDate / 86400000;*/
-		long giorni =  ((data_scadenza.getTime() - oggi.getTime()) / 86400000L);
 		
-		if(giorni < 10)
+		// sbagliava ad inizializzare la data, metteva 120 e quindi i calcoli non funzionavano
+		oggi.setYear(2020);
+		long giorni =  ((data_scadenza.getTime() - oggi.getTime()) / 86400000L); // 
+		
+		// calcola un giorno in meno, quindi faccio +1
+		if(giorni+1 < 10)
 			setPrezzo_unitario(getPrezzo_unitario() - (getPrezzo_unitario() * 20)/100);
 	}
 
