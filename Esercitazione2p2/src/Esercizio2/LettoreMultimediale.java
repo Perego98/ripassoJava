@@ -10,7 +10,7 @@ public class LettoreMultimediale {
 		int ins = 0;
 		
 		do {
-			if(!finito) {
+			if(!finito) {// fino a che non ho finito
 				System.out.println("1) crea immagine\n2) crea video\n3) crea audio");
 				try {
 					System.out.print("Input: ");
@@ -20,11 +20,11 @@ public class LettoreMultimediale {
 					System.out.println("Input non valido");
 				}
 				
-				if(ins == 0)
+				if(ins == 0) // se premo 0 esco
 					finito = true;
-				else if(ins < 0 || ins > lettore.length)
+				else if(ins < 0 || ins > lettore.length) // se il valore non è ammissibile stampo errore
 					System.out.println("Posizione non valida");
-				else {
+				else {// se va tutto bene creo l'oggetto indicato e lo inserisco nella prima cella libera
 					boolean inserito = false;
 					for(int i = 0; i < lettore.length && !inserito; i++) {
 						if(lettore[i] == null) {
@@ -48,6 +48,7 @@ public class LettoreMultimediale {
 	}
 	
 	static Immagine creaImmagine() {
+		// creo una immagine chiedendo il titolo
 		Scanner input = new Scanner(System.in);
 		String titolo = null;
 		System.out.println("Creazione immagine...");
@@ -65,6 +66,7 @@ public class LettoreMultimediale {
 	}
 	
 	static Filmato creaVideo() {
+		// creo un video chiedendo titolo e durata
 		Scanner input = new Scanner(System.in);
 		String titolo = null;
 		int durata = 0;
@@ -91,6 +93,7 @@ public class LettoreMultimediale {
 	}
 	
 	static RegistrazioneAudio creaAudio() {
+		// creo un audio chiedendo durata
 		Scanner input = new Scanner(System.in);
 		String titolo = null;
 		int durata = 0;
@@ -117,6 +120,8 @@ public class LettoreMultimediale {
 	}
 	
 	static void esegui(ElementoMultimediale [] lettore) {
+		
+		// chedo a utente che file vuole inserire
 		Scanner input = new Scanner(System.in);
 		
 		boolean finito = false;
@@ -132,11 +137,11 @@ public class LettoreMultimediale {
 				System.out.println("Input non valido");
 			}
 			
-			if(ins == 0)
+			if(ins == 0)// se preme 0 esco
 				finito = true;
-			else if(ins-1 < 0 || ins-1 > lettore.length)
+			else if(ins-1 < 0 || ins-1 > lettore.length)// se l'inserimento non è valido lo stampo
 				System.out.println("Posizione non valida");
-			else {
+			else {// altrimenti eseguo il file richiesto
 				ins--;
 				if(lettore[ins] != null) {
 					if(lettore[ins].getClass() == new Immagine().getClass())
@@ -153,6 +158,7 @@ public class LettoreMultimediale {
 	}
 	
 	static void eseguiAudio(RegistrazioneAudio temp) {
+		// stampa l'audio e chiede cosa vuole modificare
 		Scanner input = new Scanner(System.in);
 		boolean finito = false;
 		int ins = 0;
@@ -177,6 +183,7 @@ public class LettoreMultimediale {
 	}
 	
 	static void eseguiFilmato(Filmato temp) {
+		// stampa il filmato e chiede cosa vuole modificare
 		Scanner input = new Scanner(System.in);
 		boolean finito = false;
 		int ins = 0;
@@ -206,6 +213,7 @@ public class LettoreMultimediale {
 	}
 	
 	static void eseguiImmagine(Immagine temp) {
+		// stampa una immagine e chiede cosa vuole modificare
 		Scanner input = new Scanner(System.in);
 		boolean finito = false;
 		int ins = 0;
@@ -231,6 +239,7 @@ public class LettoreMultimediale {
 	}
 	
 	static void stampa(ElementoMultimediale [] lettore) {
+		// una stampa di tutti gli elementi inseriti
 		for(int i = 0; i < lettore.length; i++){
 			if (lettore[i] != null) {
 				System.out.println((i+1)+")" + lettore[i].toString());
