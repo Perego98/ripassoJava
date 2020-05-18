@@ -1,15 +1,16 @@
 package com.luv2code.hibernate.demo;
 
-
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import com.luv2code.hibernate.demo.entity.Course;
 import com.luv2code.hibernate.demo.entity.Instructor;
 import com.luv2code.hibernate.demo.entity.InstructorDetail;
+import com.luv2code.hibernate.demo.entity.Review;
+import com.luv2code.hibernate.demo.entity.Student;
 
-public class DeleteDemo {
+public class DeleteMaryStudentDemo {
 
 	public static void main(String[] args) {
 
@@ -18,6 +19,9 @@ public class DeleteDemo {
 								.configure("hibernate.cfg.xml")
 								.addAnnotatedClass(Instructor.class)
 								.addAnnotatedClass(InstructorDetail.class)
+								.addAnnotatedClass(Course.class)
+								.addAnnotatedClass(Review.class)
+								.addAnnotatedClass(Student.class)
 								.buildSessionFactory();
 		
 		// create session
@@ -27,36 +31,36 @@ public class DeleteDemo {
 			
 			// start a transaction
 			session.beginTransaction();
-
-			// get instructor by primary key / id
-			int theId = 1;
-			Instructor tempInstructor = 
-					session.get(Instructor.class, theId);
+						
+			// get the student mary from database
+			int studentId = 2;
+			Student tempStudent = session.get(Student.class, studentId);
 			
-			System.out.println("Found instructor: " + tempInstructor);
+			System.out.println("\nLoaded student: " + tempStudent);
+			System.out.println("\nCourses: " + tempStudent.getCourses());
 			
-			// delete the instructors
-			if (tempInstructor != null) {
+			// delete mary
+			System.out.println("\nDeleting student: " + tempStudent);
+			session.delete(tempStudent);
 			
-				System.out.println("Deleting: " + tempInstructor);
-				
-				// Note: will ALSO delete associated "details" object
-				// because of CascadeType.ALL
-				//
-				session.delete(tempInstructor);				
-			}
-			
-			// commit transaction
+			// commit transaction			
 			session.getTransaction().commit();
 			
 			System.out.println("Done!");
 		}
 		finally {
+			
+			// add clean up code
+			session.close();
+			
 			factory.close();
 		}
 	}
 
 }
+
+
+
 
 
 

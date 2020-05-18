@@ -11,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -19,13 +21,13 @@ import javax.persistence.Table;
 @Table(name="course")
 public class Course {
 
-	// define out fields
+	// define our fields
 	
-	// define constructor
+	// define constructors
 	
-	// define getter/setter
+	// define getter setters
 	
-	// define toString
+	// define tostring
 	
 	// annotate fields
 	
@@ -37,16 +39,25 @@ public class Course {
 	@Column(name="title")
 	private String title;
 	
-	@ManyToOne(cascade= {CascadeType.DETACH,
-						CascadeType.MERGE,
-						CascadeType.PERSIST,
-						CascadeType.REFRESH})
+	@ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
+						 CascadeType.DETACH, CascadeType.REFRESH})
 	@JoinColumn(name="instructor_id")
 	private Instructor instructor;
 	
 	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	@JoinColumn(name="course_id")
 	private List<Review> reviews;
+		
+	@ManyToMany(fetch=FetchType.LAZY,
+			cascade= {CascadeType.PERSIST, CascadeType.MERGE,
+			 CascadeType.DETACH, CascadeType.REFRESH})
+	@JoinTable(
+			name="course_student",
+			joinColumns=@JoinColumn(name="course_id"),
+			inverseJoinColumns=@JoinColumn(name="student_id")
+			)
+	private List<Student> students;
+	
 	
 	public Course() {
 		
@@ -60,26 +71,26 @@ public class Course {
 		return id;
 	}
 
-	public String getTitle() {
-		return title;
-	}
-
-	public Instructor getInstructor() {
-		return instructor;
-	}
-
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getTitle() {
+		return title;
 	}
 
 	public void setTitle(String title) {
 		this.title = title;
 	}
 
+	public Instructor getInstructor() {
+		return instructor;
+	}
+
 	public void setInstructor(Instructor instructor) {
 		this.instructor = instructor;
 	}
-	
+
 	public List<Review> getReviews() {
 		return reviews;
 	}
@@ -88,24 +99,43 @@ public class Course {
 		this.reviews = reviews;
 	}
 
-	// add a convenient mothod
+	// add a convenience method
 	
 	public void addReview(Review theReview) {
-		if(reviews == null) {
+	
+		if (reviews == null) {
 			reviews = new ArrayList<>();
 		}
 		
 		reviews.add(theReview);
 	}
 	
+	public List<Student> getStudents() {
+		return students;
+	}
+
+	public void setStudents(List<Student> students) {
+		this.students = students;
+	}
+
+	// add a convenience method
+	
+	public void addStudent(Student theStudent) {
+		
+		if (students == null) {
+			students = new ArrayList<>();
+		}
+		
+		students.add(theStudent);
+	}
 	
 	@Override
 	public String toString() {
-		return "Course [id=" + id + ", title=" + title + ", instructor=" + instructor + "]";
+		return "Course [id=" + id + ", title=" + title + "]";
 	}
 	
-	
-	
-	
-	
 }
+
+
+
+

@@ -1,6 +1,5 @@
 package com.luv2code.hibernate.demo;
 
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -9,8 +8,9 @@ import com.luv2code.hibernate.demo.entity.Course;
 import com.luv2code.hibernate.demo.entity.Instructor;
 import com.luv2code.hibernate.demo.entity.InstructorDetail;
 import com.luv2code.hibernate.demo.entity.Review;
+import com.luv2code.hibernate.demo.entity.Student;
 
-public class DeleteCourseAndReviewsDemo {
+public class AddCoursesForMaryDemo {
 
 	public static void main(String[] args) {
 
@@ -21,6 +21,7 @@ public class DeleteCourseAndReviewsDemo {
 								.addAnnotatedClass(InstructorDetail.class)
 								.addAnnotatedClass(Course.class)
 								.addAnnotatedClass(Review.class)
+								.addAnnotatedClass(Student.class)
 								.buildSessionFactory();
 		
 		// create session
@@ -30,22 +31,33 @@ public class DeleteCourseAndReviewsDemo {
 			
 			// start a transaction
 			session.beginTransaction();
-
-			// get the course
-			int theId = 12;
-			Course tempCourse = session.get(Course.class, theId);
+						
+			// get the student mary from database
+			int studentId = 2;
+			Student tempStudent = session.get(Student.class, studentId);
 			
-			// print the course
-			System.out.println("Deleting the course...");
-			System.out.println(tempCourse + "\n\n");
+			System.out.println("\nLoaded student: " + tempStudent);
+			System.out.println("\nCourses: " + tempStudent.getCourses());
 			
-			// print the course reviews
-			System.out.println(tempCourse.getReviews() + "\n\n");
+			// create more courses
+			Course tempCourse1 = new Course("Rubik' Cube");
+			Course tempCourse2 = new Course("Atari 2600");
+			Course tempCourse3 = new Course("Nintendo");			
 			
-			// delete course
-			session.delete(tempCourse);			
+			// add student to courses
+			tempCourse1.addStudent(tempStudent);
+			tempCourse2.addStudent(tempStudent);
+			tempCourse3.addStudent(tempStudent);
 			
-			// commit transaction
+			// save the courses
+			System.out.println("\nSaving the courses...");
+			
+			session.save(tempCourse1);
+			session.save(tempCourse2);
+			session.save(tempCourse3);
+			
+			
+			// commit transaction			
 			session.getTransaction().commit();
 			
 			System.out.println("Done!");
@@ -60,6 +72,7 @@ public class DeleteCourseAndReviewsDemo {
 	}
 
 }
+
 
 
 
