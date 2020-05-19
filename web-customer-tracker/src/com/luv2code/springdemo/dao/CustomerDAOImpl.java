@@ -35,7 +35,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 		// return the result
 		
 		
-		return null;
+		return customers;
 	}
 
 }
