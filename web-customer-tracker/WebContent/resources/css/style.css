@@ -45,3 +45,60 @@ tr:nth-child(odd) {background: #BBBBBB}
 	margin-bottom: 15px;
 	background: #cccccc;
 }
+
+.back-button {
+	border: 1px solid #666; 
+	border-radius: 5px; 
+	padding: 4px; 
+	font-size: 9px;
+	font-weight: bold;
+	width: 100px; 
+	padding: 5px 10px; 
+	
+	margin-bottom: 15px;
+	background: #ccccfc;
+}
+
+.update-button {
+	border: 1px solid #666; 
+	border-radius: 5px; 
+	padding: 4px; 
+	font-size: 12px;
+	font-weight: bold;
+	width: 120px; 
+	padding: 5px 10px; 
+	
+	margin-top: 1px;
+	margin-bottom: 1px;
+	
+	background: #b3ecff;
+}
+
+.update-button-old {
+	border: 1px solid #666; 
+	border-radius: 5px; 
+	padding: 4px; 
+	font-size: 12px;
+	font-weight: bold;
+	width: 120px; 
+	padding: 5px 10px; 
+	
+	margin-top: 1px;
+	margin-bottom: 1px;
+	
+	background: #bfcfcf;
+}
+
+.delete-button {
+	border: 1px solid #666; 
+	border-radius: 5px; 
+	padding: 4px; 
+	font-size: 12px;
+	font-weight: bold;
+	width: 120px; 
+	padding: 5px 10px; 
+	
+	margin-top: 1px;
+	margin-bottom: 1px;
+	background: #FF6240;
+}
