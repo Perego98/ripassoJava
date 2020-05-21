@@ -12,6 +12,12 @@ public class MembershipDAO {
 		return true;
 	}
 	
+	public void goToSleep() {
+		
+		System.out.println(getClass() + ": I'm going to spleep now");
+		
+	}
+	
 //	public void addSyllyMemeber() {
 //		
 //		System.out.println(getClass() + ": DOING addSyllyMemeber: addSyllyMemeber A addSyllyMemeber ACCOUNT");

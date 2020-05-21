@@ -12,14 +12,47 @@ public class MyDemoLoginAspect {
 	
 	// let's start with @Before advice
 	
-	//@Before("execution(public void addAccount())")
+//	 molto restrittivo
+//	@Before("execution(public void addAccount())")
 	
-	//@Before("execution(public void com.luv2code.aopdemo.dao.AccountDAO.addAccount())")
+//	 ancora piu restrittivo
+//	@Before("execution(public void com.luv2code.aopdemo.dao.AccountDAO.addAccount())")
 	
-	//@Before("execution(public void add*())")
+//	 qualsiasi metodo che iniza con add e che sia public con valore di ritorno void
+//	@Before("execution(public void add*())")
 	
-	@Before("execution(* add*())")
+//	 qualsiasi metodo con qualsiasi tipo di ritorno che inizi con add
+//	@Before("execution(* add*())")
+	
+//	il metodo deve avere in ingresso un parametro di tipo Account
+//	@Before("execution(* add*(com.luv2code.aopdemo.Account, ..))")
+	
+//	il metodo deve avere in ingresso zero o poiù parametri
+//	@Before("execution(* add*(..))")
+	
+//	Match any params in a pakage 
+	@Before("execution(* com.luv2code.aopdemo.dao.*.*(..))")
 	public void beforeAddAccountAdvice() {
 		System.out.println("\n====>>> Execution @Before advice on method");
 	}
 }
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
