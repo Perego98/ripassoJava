@@ -1,4 +1,4 @@
-  package com.luv2code.aopdemo;
+ package com.luv2code.aopdemo;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.ui.context.Theme;
@@ -23,7 +23,9 @@ public class MainDemoApp {
 		
 		// call the business method
 		Account myAccount = new Account();
-		theAccountDAO.addAccount(myAccount, false);
+		myAccount.setName("Peregopr@gmail.com");
+		myAccount.setLevel("Platinum");
+		theAccountDAO.addAccount(myAccount, true);
 		theAccountDAO.doWork();
 		
 		// call the get/set

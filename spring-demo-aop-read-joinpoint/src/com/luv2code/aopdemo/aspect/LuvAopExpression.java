@@ -14,7 +14,7 @@ public class LuvAopExpression {
 	public void getter() {}
 	
 	// create pointcut for setter methods
-	@Pointcut("execution(* com.luv2code.aopdemo.dao.*.set*(..))") 
+	@Pointcut("execution(* com.luv2code.aopdemo.dao.*.set*(..))")
 	public void setter() {}
 	
 	// create pointcut include pakage and exclude setter and getter
