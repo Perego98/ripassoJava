@@ -3,7 +3,9 @@ package com.luv2code.aopdemo.aspect;
 import java.util.List;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.reflect.MethodSignature;
@@ -17,6 +19,30 @@ import com.luv2code.aopdemo.Account;
 @Order(2)
 public class MyDemoLoginAspect {
 
+	@After("execution(* com.luv2code.aopdemo.dao.AccountDAO.findAccount(..))")
+	public void afterFinallyFindAccountsAdvice(JoinPoint theJoinPoint){
+		
+		// print out which method we are advising on
+		String method = theJoinPoint.getSignature().toShortString();
+		System.out.println("\n==========>>> Execute @After (finally) on method: " + method);
+	}
+	
+	
+	@AfterThrowing(
+			pointcut="execution(* com.luv2code.aopdemo.dao.AccountDAO.findAccount(..))",
+			throwing="theExc")
+	public void afterThrowingFindAccountsAdvice(JoinPoint theJoinPoint, Throwable theExc) {
+	
+		// print out which method we are advising on
+		String method = theJoinPoint.getSignature().toShortString();
+		System.out.println("\n==========>>> Execute @AfterThrowing on method: " + method);
+		
+		// log the exception
+		System.out.println("\n==========>>> The exception is: " + theExc);
+	}
+	
+	
+	
 	// add a new advice for returning 
 	@AfterReturning(
 				pointcut="execution(* com.luv2code.aopdemo.dao.AccountDAO.findAccount(..))",
