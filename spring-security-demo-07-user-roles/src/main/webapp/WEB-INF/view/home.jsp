@@ -28,23 +28,30 @@
 		
 	</p>
 	
-	<hr>
 	
 	<!-- Add a link to point to /leaders... this is for manager -->
 	
-	<p>
-		<a href="${pageContext.request.contextPath}/leaders"> LeaderShip Meeting</a>
-		(only for manager peeps)
-	</p>
+	<security:authorize access="hasRole('MANAGER')">
+	
+		<p>
+			<a href="${pageContext.request.contextPath}/leaders"> LeaderShip Meeting</a>
+			(only for manager peeps)
+		</p>
+		
+	</security:authorize>
 	
 	<hr>
 	
 	<!-- Add a link to point to /systems... this is for admins -->
 	
-	<p>
-		<a href="${pageContext.request.contextPath}/systems"> IT Systems Meeting</a>
-		(only for Admins peeps)
-	</p>
+	<security:authorize access="hasRole('ADMIN')">
+	
+		<p>
+			<a href="${pageContext.request.contextPath}/systems"> IT Systems Meeting</a>
+			(only for Admins peeps)
+		</p>
+	
+	</security:authorize>
 	
 	<hr>
 
